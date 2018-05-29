@@ -30,7 +30,8 @@ public class StudentResource {
 
 	@GetMapping("/students")
 	public List<Student> retrieveAllStudents() {
-		return studentRepository.findAll();
+		List<Student> tmp=studentRepository.findAll();
+		return tmp;
 	}
 
 	@GetMapping("/students/{id}")

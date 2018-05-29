@@ -8,11 +8,13 @@ import javax.validation.constraints.Size;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+
 @Entity
 @ApiModel(description="All details about the student. ")
 public class Student {
 	@Id
-	@GeneratedValue
+	@GeneratedValue	
+	@ApiModelProperty(hidden=true)
 	private Long id;
 	
 	@ApiModelProperty(notes="Name should have atleast 2 characters")

@@ -21,8 +21,8 @@ import io.swagger.annotations.SwaggerDefinition;
                    url = "http://www.apache.org/licenses/LICENSE-2.0"
                 )
         ),
-        consumes = {"application/json", "application/xml"},
-        produces = {"application/json", "application/xml"},
+        consumes = {"application/json"},
+        produces = {"application/json"},
         schemes = {SwaggerDefinition.Scheme.HTTP, SwaggerDefinition.Scheme.HTTPS},
         externalDocs = @ExternalDocs(value = "Read This For Sure", url = "http://in28minutes.com")
 )
