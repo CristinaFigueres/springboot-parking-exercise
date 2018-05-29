@@ -1,4 +1,4 @@
-package com.in28minutes.springboot.rest.example.swagger;
+package com.demo.parking.swagger;
 
 import io.swagger.annotations.Contact;
 import io.swagger.annotations.ExternalDocs;

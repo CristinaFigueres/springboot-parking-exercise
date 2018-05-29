@@ -1,4 +1,4 @@
-package com.in28minutes.springboot.rest.example.swagger;
+package com.demo.parking.swagger;
 
 import java.util.Arrays;
 import java.util.HashSet;
