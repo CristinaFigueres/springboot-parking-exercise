@@ -1,8 +1,6 @@
-package com.demo.parking.student;
+package com.demo.parking.model;
 
 import java.util.Comparator;
-
-import com.demo.parking.model.ParkingBay;
 
 public class ParkingBayComparator implements Comparator<ParkingBay> {
 
