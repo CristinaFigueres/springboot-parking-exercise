@@ -54,25 +54,10 @@ public class ParkingService {
 			ParkingBay pbAvail = pb.get(0);
 			pbAvail.setOccupied(carType);
 			parkingBayRepository.save(pbAvail);
-			return ResponseEntity.ok(pbAvail);
+			return ResponseEntity.ok(pbAvail.getIndex());
 		}
 
 		return ResponseEntity.noContent().build();
-	}
-	
-	private List<Character> getAvailableTypes(){
-		//define the mining of available with the types
-		List<Character> types = new ArrayList<Character>();
-		types.add('U');
-		types.add('@');
-		return types;
-	}
-	
-	private List<Character> getAvailableDisabledTypes(){
-		//define the mining of available with the types
-		List<Character> types = new ArrayList<Character>();
-		types.add('@');
-		return types;
 	}
 	
 	@PutMapping("/parking/{id}/unparkCar")
@@ -104,14 +89,52 @@ public class ParkingService {
 			return ResponseEntity.ok().body(true);
 		}
 	}
-//	
-//	@GetMapping("/parking/{id}/print")
-//	public ResponseEntity<Object> printParking() {
-//		
-//		List<Parking> parking = parkingRepository.findAll();
-//		
-//		//TODO: print the info of the parking lot
-//		return null;
-//	}
 	
+	@GetMapping("/parking/{id}/print")
+	public ResponseEntity<Object> printParking(@PathVariable long id) {
+		
+		Optional<Parking> parking = parkingRepository.findById(id);
+
+		if (!parking.isPresent())
+			return ResponseEntity.notFound().build();
+		
+		Parking p = parking.get();
+		
+		//return the 2-dimension print of the parking selected by the param id
+		
+		return ResponseEntity.ok(new ResponsePrint(p.toString()));
+	}
+
+	
+	private List<Character> getAvailableTypes(){
+		//define the mining of available with the types
+		List<Character> types = new ArrayList<Character>();
+		types.add('U');
+		types.add('@');
+		return types;
+	}
+	
+	private List<Character> getAvailableDisabledTypes(){
+		//define the mining of available with the types
+		List<Character> types = new ArrayList<Character>();
+		types.add('@');
+		return types;
+	}
+	
+	class ResponsePrint{
+		private String content;
+		
+		public ResponsePrint(String content) {
+			super();
+			this.content = content;
+		}
+
+		public String getContent() {
+			return content;
+		}
+
+		public void setContent(String content) {
+			this.content = content;
+		}
+	}
 }
