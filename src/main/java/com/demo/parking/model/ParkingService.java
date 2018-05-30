@@ -61,7 +61,7 @@ public class ParkingService {
 	}
 	
 	private List<Character> getAvailableTypes(){
-		//define the mining of available with the enum types
+		//define the mining of available with the types
 		List<Character> types = new ArrayList<Character>();
 		types.add('U');
 		types.add('@');
@@ -69,27 +69,41 @@ public class ParkingService {
 	}
 	
 	private List<Character> getAvailableDisabledTypes(){
-		//define the mining of available with the enum types
+		//define the mining of available with the types
 		List<Character> types = new ArrayList<Character>();
 		types.add('@');
 		return types;
 	}
-//	
-//	@PutMapping("/parking/{id}/unparkCar")
-//	public ResponseEntity<Object> unparkCar(@PathParam("index") int indexUnpark, @PathVariable long id) {
-//
-//		Optional<Parking> parking = parkingRepository.findById(id);
-//
-//		if (!parking.isPresent())
-//			return ResponseEntity.notFound().build();
-//
-//		//TODO: make free the index bay
-////		student.setId(id);
-////		
-////		studentRepository.save(student);
-//
-//		return ResponseEntity.noContent().build();
-//	}
+	
+	@PutMapping("/parking/{id}/unparkCar")
+	public ResponseEntity<Object> unparkCar(@RequestParam("index") int indexUnpark, @PathVariable long id) {
+
+		Optional<Parking> parking = parkingRepository.findById(id);
+
+		if (!parking.isPresent())
+			return ResponseEntity.notFound().build();
+		
+		//search for the parking bay to be unpark
+		Optional<ParkingBay> pb = parkingBayRepository.findById(new Long(indexUnpark));
+		if (!pb.isPresent())
+			return ResponseEntity.notFound().build();
+		
+		ParkingBay bay = pb.get();
+		if (bay.getOccupied() == 'U' || bay.getOccupied() == '@') {
+			//the bay wasn't occupied then return false
+			return ResponseEntity.ok().body(false);
+		} else {
+			//set the bay as empty again
+			if (bay.isDisabledBay()) {
+				bay.setOccupied('@');
+			} else {
+				bay.setOccupied('U');
+			}
+			parkingBayRepository.save(bay);
+			//the bay was occupied then return true
+			return ResponseEntity.ok().body(true);
+		}
+	}
 //	
 //	@GetMapping("/parking/{id}/print")
 //	public ResponseEntity<Object> printParking() {
