@@ -1,10 +1,3 @@
-insert into student
-values(10001,'Ranga', 'E1234567');
-
-insert into student
-values(10002,'Ravi', 'A1234568');
-
-
 insert into parking values(1, 4);
 insert into parking values(2, 3);
 insert into parking values(3, 2);

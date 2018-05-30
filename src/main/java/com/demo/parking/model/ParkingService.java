@@ -29,8 +29,8 @@ public class ParkingService {
 	}
 	
 	@PutMapping("/parking/{id}/parkCar")
-//	@ApiOperation(value = "Find student by id",
-//    notes = "Also returns a link to retrieve all students with rel - all-students")
+//	@ApiOperation(value = "Park a car by its type",
+//    notes = "Also returns the index of the parking bay where is parked the car")
 	public ResponseEntity<Object> parkCar(@RequestParam("carType") char carType, @PathVariable long id) {
 		Optional<Parking> parking = parkingRepository.findById(id);
 
