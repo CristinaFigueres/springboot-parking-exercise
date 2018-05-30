@@ -2,7 +2,8 @@ package com.demo.parking.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -27,25 +28,36 @@ public class ParkingBay {
 	@Column(name="disabledBay")
 	private boolean disabledBay;
 	
-	@ApiModelProperty(notes="Bay occupied. ")
+	@ApiModelProperty(notes="Bay occupied by. ")
 	@Column(name="occupied")
-	private boolean occupied;
+	private char occupied;
+	
+	@ApiModelProperty(notes="Minim distance to a pedestrian exit. ")
+	@Column(name="minDistance")
+	private Integer minDistance;
 	
 	@ManyToOne
 	@JoinColumn(name = "id")
 	private Parking parking;
-
-
-	public ParkingBay(Long index, boolean pedestrianExit, boolean disabledBay, boolean occupied, Parking parking) {
+	
+	public ParkingBay(Long index, boolean pedestrianExit, boolean disabledBay, char occupied,
+			Integer minDistance, Parking parking) {
 		super();
 		this.index = index;
 		this.pedestrianExit = pedestrianExit;
 		this.disabledBay = disabledBay;
 		this.occupied = occupied;
+		this.minDistance = minDistance;
 		this.parking = parking;
 	}
-	
-	
+
+
+	public ParkingBay() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public Parking getParking() {
 		return parking;
 	}
@@ -78,12 +90,42 @@ public class ParkingBay {
 		this.disabledBay = disabledBay;
 	}
 
-	public boolean isOccupied() {
+	public char getOccupied() {
 		return occupied;
 	}
 
-	public void setOccupied(boolean occupied) {
+
+	public void setOccupied(char occupied) {
 		this.occupied = occupied;
 	}
+
+
+	public Integer getMinDistance() {
+		return minDistance;
+	}
+
+
+	public void setMinDistance(Integer minDistance) {
+		this.minDistance = minDistance;
+	}
+
+
+//	public enum BayType {
+//		PEDESTRIAN('='),
+//		DISABLED_EMPTY('@'),  
+//		NON_DISABLED_EMPTY('U'),
+//		DISABLED_OCCUPIED('D');
+//		
+//		private char description;
+//		
+//		private BayType(char charact){
+//			this.description = charact;
+//		}
+//		
+//		public char getDescription(){
+//			return this.description;
+//		}
+//
+//	};
 		
 }
