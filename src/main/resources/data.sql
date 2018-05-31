@@ -2,6 +2,7 @@ insert into parking values(1, 4);
 insert into parking values(2, 3);
 insert into parking values(3, 2);
 insert into parking values(4, 10);
+insert into parking values(5, 5);
 
 insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(301, false, false, 'U',  null, 1);
 insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(302, false, false, 'U',  null, 1);
@@ -36,6 +37,7 @@ insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_dis
 insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(102, false, true, '@',  null, 3);
 insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(103, false, false, 'U',  null, 3);
 insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(104, false, false, 'U',  null, 3);
+
 
 insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(1, false, false, 'U', 7, 4);
 insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(2, false, true, '@', 6, 4);
@@ -137,3 +139,30 @@ insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_dis
 insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(98, false, false, 'U', 13, 4);
 insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(99, false, false, 'U', 14, 4);
 insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(100, false, false, 'U', 15, 4);
+
+
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(501, false, false, 'U',  7, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(502, false, false, 'U',  6, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(503, false, false, 'U',  5, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(504, false, false, 'U',  4, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(505, false, true, '@',  3, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(506, false, false, 'U',  2, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(507, false, false, 'U',  1, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(508, true, false, '=',  null, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(509, false, false, 'U',  1, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(510, false, true, '@',  2, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(511, false, false, 'U',  1, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(512, true, false, '=',  null, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(513, false, false, 'U',  1, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(514, false, false, 'U',  2, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(515, false, false, 'U',  3, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(516, false, false, 'U',  4, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(517, false, false, 'U',  5, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(518, false, false, 'U',  6, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(519, false, false, 'U',  7, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(520, false, false, 'U',  8, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(521, false, false, 'U',  9, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(522, false, false, 'U',  10, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(523, false, false, 'U',  11, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(524, false, false, 'U',  12, 5);
+insert into parking_bay (index, pedestrian_exit, disabled_bay, occupied, min_distance, id) values(525, false, false, 'U',  13, 5);

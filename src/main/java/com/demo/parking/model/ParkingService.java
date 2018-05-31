@@ -40,7 +40,7 @@ public class ParkingService {
 			return ResponseEntity.notFound().build();
 		
 		//define the order needed to obtain the first available
-		Sort sort = new Sort(Sort.Direction.DESC, "minDistance").and(new Sort(Sort.Direction.ASC, "index"));
+		Sort sort = new Sort(Sort.Direction.ASC, "minDistance").and(new Sort(Sort.Direction.ASC, "index"));
 		
 		List<Character> types = null;
 		if (carType == 'D') {
