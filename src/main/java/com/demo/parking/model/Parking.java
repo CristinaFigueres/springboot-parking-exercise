@@ -65,6 +65,14 @@ public class Parking {
 		this.size = size;
 	}
 	
+	public List<ParkingBay> getBays() {
+		return bays;
+	}
+
+	public void setBays(List<ParkingBay> bays) {
+		this.bays = bays;
+	}
+
 	@Override
     public String toString() {
 		 StringBuffer sb = new StringBuffer();
