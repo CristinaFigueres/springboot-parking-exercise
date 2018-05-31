@@ -7,15 +7,15 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
-@EnableWebSecurity
 public class ParkingService {
 
 	@Autowired
@@ -25,14 +25,14 @@ public class ParkingService {
 	private ParkingBayRepository parkingBayRepository;
 
 	@GetMapping("/parking/{id}")
+	@ApiOperation(value = "Number of available bays in the parking ")
 	public ResponseEntity<Object> availableBays(@PathVariable long id) {
 		//return the available bays, the empty ones
 		return ResponseEntity.ok(parkingBayRepository.countAvailableBays(id, getAvailableTypes()));
 	}
 	
 	@PutMapping("/parking/{id}/parkCar")
-//	@ApiOperation(value = "Park a car by its type",
-//    notes = "Also returns the index of the parking bay where is parked the car")
+	@ApiOperation(value = "Park a car with a specified type ",httpMethod="PUT")
 	public ResponseEntity<Object> parkCar(@RequestParam("carType") char carType, @PathVariable long id) {
 		Optional<Parking> parking = parkingRepository.findById(id);
 
@@ -63,6 +63,7 @@ public class ParkingService {
 	}
 	
 	@PutMapping("/parking/{id}/unparkCar")
+	@ApiOperation(value = "Unpark the car in the specified bay ")
 	public ResponseEntity<Object> unparkCar(@RequestParam("index") int indexUnpark, @PathVariable long id) {
 
 		Optional<Parking> parking = parkingRepository.findById(id);
@@ -93,6 +94,7 @@ public class ParkingService {
 	}
 	
 	@GetMapping("/parking/{id}/print")
+	@ApiOperation(value = "Prints the configuration of the parking lot ")
 	public ResponseEntity<Object> printParking(@PathVariable long id) {
 		
 		Optional<Parking> parking = parkingRepository.findById(id);
@@ -103,7 +105,6 @@ public class ParkingService {
 		Parking p = parking.get();
 		
 		//return the 2-dimension print of the parking selected by the param id
-		
 		return ResponseEntity.ok(new ResponsePrint(p.toString()));
 	}
 
