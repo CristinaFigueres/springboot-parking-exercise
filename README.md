@@ -58,14 +58,22 @@ $ mvn clean verify
 
 ### Funcionality improvements
 
-1.- Se parte de un ejemplo: initial commit with spring-boot-2-rest-service-with-swagger
-2.- Consideramos que solo las plazas que comparten un lado con la pedestrian exit tienen salida pedestrian
-3.- El index empieza en 1 de las plazas de parking
-4.- http://localhost:8080/swagger-ui.html para la ui del swagger
-5.- Guardar la posicion del bay no como  pk sino como un campo aparte
-quitar el \n del final del toString
-el TODO del Repository
+* The position of each bay inside the parking lot starts with 1 and in the enunciate seems that is defined as 0
+* It would be easier if the bay position is stored in a new fild instead of use the Priary key for this matter
+* Delete the last \n in the toString result
+
+
 
 ### Technical improvements
 
-Use of 
+* Use some tool to generate tests reports like `jacoco` or `mockito`
+* Achieve with jpa return only the first value in the firstAvailable list o ParkingBay
+* Add a business layer between the Repository and the REST service
+* Use of constants
+* Use of logs
+* Use of JavaDoc
+* Catch of exceptions
+* Input validations
+* Use of interfaces
+
+
