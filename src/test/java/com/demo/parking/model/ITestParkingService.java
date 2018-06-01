@@ -1,10 +1,9 @@
 package com.demo.parking.model;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.junit.Before;
@@ -25,7 +24,6 @@ public class ITestParkingService {
 	private ParkingRepository parkingRepository;
 	
 	private Parking parking;
-	private List<ParkingBay> pbs;
 	
 	@Before
     public void setUp() {
@@ -56,38 +54,37 @@ public class ITestParkingService {
 
     @Test
     public void testParkCarVehiculeTypeM() {
-        assertEquals(509, ((Long)parkingService.parkCar('M', parking.getId()).getBody()).longValue());
-        assertEquals(21, ((Long)parkingService.availableBays(parking.getId()).getBody()).longValue());
+        assertEquals(507, ((Long)parkingService.parkCar('M', parking.getId()).getBody()).longValue());
+        assertEquals(22, ((Long)parkingService.availableBays(parking.getId()).getBody()).longValue());
         //unpark the parked to leave the DB as before
         parkingService.unparkCar(509, parking.getId());
     }
 
     @Test
     public void testParkCarTwoVehicules() {
-        assertEquals(511, ((Long)parkingService.parkCar('C', parking.getId()).getBody()).longValue());
-        assertEquals(20, ((Long)parkingService.availableBays(parking.getId()).getBody()).longValue());
-
-        assertEquals(513, ((Long)parkingService.parkCar('M', parking.getId()).getBody()).longValue());
-        assertEquals(19, ((Long)parkingService.availableBays(parking.getId()).getBody()).longValue());
+        assertEquals(507, ((Long)parkingService.parkCar('C', parking.getId()).getBody()).longValue());
+        assertEquals(22, ((Long)parkingService.availableBays(parking.getId()).getBody()).longValue());
+        assertEquals(509, ((Long)parkingService.parkCar('M', parking.getId()).getBody()).longValue());
+        assertEquals(21, ((Long)parkingService.availableBays(parking.getId()).getBody()).longValue());
         
         //unpark the parked to leave the DB as before
-        parkingService.unparkCar(511, parking.getId());
-        parkingService.unparkCar(513, parking.getId());
+        parkingService.unparkCar(507, parking.getId());
+        parkingService.unparkCar(509, parking.getId());
     }
 
     @Test
     public void testParkCarDisabled() {
-        assertEquals(506, ((Long)parkingService.parkCar('D', parking.getId()).getBody()).longValue());
-        assertEquals(18, ((Long)parkingService.availableBays(parking.getId()).getBody()).longValue());
+        assertEquals(510, ((Long)parkingService.parkCar('D', parking.getId()).getBody()).longValue());
+        assertEquals(22, ((Long)parkingService.availableBays(parking.getId()).getBody()).longValue());
 
         assertEquals(505, ((Long)parkingService.parkCar('D', parking.getId()).getBody()).longValue());
-        assertEquals(17, ((Long)parkingService.availableBays(parking.getId()).getBody()).longValue());
+        assertEquals(21, ((Long)parkingService.availableBays(parking.getId()).getBody()).longValue());
 
-        assertEquals(-1, ((Long)parkingService.parkCar('D', parking.getId()).getBody()).longValue());
-        assertEquals(17, ((Long)parkingService.availableBays(parking.getId()).getBody()).longValue());
+        assertEquals(-1, ((Integer)parkingService.parkCar('D', parking.getId()).getBody()).intValue());
+        assertEquals(21, ((Long)parkingService.availableBays(parking.getId()).getBody()).longValue());
         
         //unpark the parked to leave the DB as before
-        parkingService.unparkCar(506, parking.getId());
+        parkingService.unparkCar(510, parking.getId());
         parkingService.unparkCar(505, parking.getId());
     }
 
@@ -95,40 +92,71 @@ public class ITestParkingService {
     public void testUnparkCar() {
         final int firstCarBayIndex = ((Long)parkingService.parkCar('X', parking.getId()).getBody()).intValue();
         assertTrue(((boolean)parkingService.unparkCar(firstCarBayIndex, parking.getId()).getBody()));
-        assertEquals(17, ((Long)parkingService.availableBays(parking.getId()).getBody()).longValue());
+        assertEquals(23, ((Long)parkingService.availableBays(parking.getId()).getBody()).longValue());
         assertFalse(((boolean)parkingService.unparkCar(firstCarBayIndex, parking.getId()).getBody()));
 
         final int secondCarBayIndex = ((Long)parkingService.parkCar('D', parking.getId()).getBody()).intValue();
         assertTrue(((boolean)parkingService.unparkCar(secondCarBayIndex, parking.getId()).getBody()));
-        assertEquals(17, ((Long)parkingService.availableBays(parking.getId()).getBody()).longValue());
+        assertEquals(23, ((Long)parkingService.availableBays(parking.getId()).getBody()).longValue());
         assertFalse(((boolean)parkingService.unparkCar(secondCarBayIndex, parking.getId()).getBody()));
 
-        assertFalse(((boolean)parkingService.unparkCar(8, parking.getId()).getBody()));
+        assertFalse(((boolean)parkingService.unparkCar(508, parking.getId()).getBody()));
     }
-
+    
     @Test
-    public void testToStringAfter() {
-        parkingService.parkCar('C', parking.getId());
-        parkingService.parkCar('M', parking.getId());
-        parkingService.parkCar('C', parking.getId());
-        parkingService.parkCar('M', parking.getId());
-        parkingService.parkCar('D', parking.getId());
-        parkingService.parkCar('D', parking.getId());
-        
-		Optional<Parking> parkingOp = parkingRepository.findById(new Long(5));
-		parking =parkingOp.get();
-        
-        String t = parking.toString();
+    public void testToStringSecond() {
+    	
+    	parkingService.parkCar('C', parking.getId());
+ 		Optional<Parking> parkingOp = parkingRepository.findById(new Long(5));
+ 		parking =parkingOp.get();
+        assertEquals("UUUU@\n@U=CU\nU=UUU\nUUUUU\nUUUUU\n", parking.toString());
 
-        assertEquals("UUUUD\nDC=MU\nC=MUU\nUUUUU\nUUUUU\n", parking.toString());
+        parkingService.parkCar('C', parking.getId());
+ 		parkingOp = parkingRepository.findById(new Long(5));
+ 		parking =parkingOp.get();
+        assertEquals("UUUU@\n@C=CU\nU=UUU\nUUUUU\nUUUUU\n", parking.toString());
+        
+        parkingService.parkCar('M', parking.getId());
+ 		parkingOp = parkingRepository.findById(new Long(5));
+ 		parking =parkingOp.get();
+        assertEquals("UUUU@\n@C=CU\nM=UUU\nUUUUU\nUUUUU\n", parking.toString());
+
+        parkingService.parkCar('M', parking.getId());
+ 		parkingOp = parkingRepository.findById(new Long(5));
+ 		parking =parkingOp.get();
+        assertEquals("UUUU@\n@C=CU\nM=MUU\nUUUUU\nUUUUU\n", parking.toString());
+        
+        parkingService.parkCar('D', parking.getId());
+        parkingOp = parkingRepository.findById(new Long(5));
+ 		parking =parkingOp.get();
+        assertEquals("UUUU@\nDC=CU\nM=MUU\nUUUUU\nUUUUU\n", parking.toString());
+
+        parkingService.parkCar('D', parking.getId());
+ 		parkingOp = parkingRepository.findById(new Long(5));
+ 		parking =parkingOp.get();
+        assertEquals("UUUUD\nDC=CU\nM=MUU\nUUUUU\nUUUUU\n", parking.toString());
+
+        parkingService.parkCar('D', parking.getId());
+        parkingOp = parkingRepository.findById(new Long(5));
+  		parking =parkingOp.get();
+        assertEquals("UUUUD\nDC=CU\nM=MUU\nUUUUU\nUUUUU\n", parking.toString());
+
+        parkingService.unparkCar(503, parking.getId());
+        parkingOp = parkingRepository.findById(new Long(5));
+  		parking =parkingOp.get();
+        assertEquals("UUUUD\nDC=CU\nM=MUU\nUUUUU\nUUUUU\n", parking.toString());
+        
+        parkingService.unparkCar(513, parking.getId());
+        parkingOp = parkingRepository.findById(new Long(5));
+  		parking =parkingOp.get();
+        assertEquals("UUUUD\nDC=CU\nM=UUU\nUUUUU\nUUUUU\n", parking.toString());
         
         //unpark the parked to leave the DB as before
+        parkingService.unparkCar(505, parking.getId());
+        parkingService.unparkCar(510, parking.getId());
         parkingService.unparkCar(507, parking.getId());
         parkingService.unparkCar(509, parking.getId());
-        parkingService.unparkCar(511, parking.getId());
-        parkingService.unparkCar(513, parking.getId());
-        parkingService.unparkCar(506, parking.getId());
-        parkingService.unparkCar(505, parking.getId());
+        parkingService.unparkCar(511, parking.getId());     
     }
 
 }

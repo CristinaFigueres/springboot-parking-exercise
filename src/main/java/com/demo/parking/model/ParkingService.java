@@ -51,15 +51,15 @@ public class ParkingService {
 		}
 		List<ParkingBay> pb = parkingBayRepository.firstAvailable(id, types, sort);
 		
-		if (pb != null) {
+		if (pb != null && !pb.isEmpty()) {
 			//get the first one because the list of results is ordered
 			ParkingBay pbAvail = pb.get(0);
 			pbAvail.setOccupied(carType);
 			parkingBayRepository.save(pbAvail);
 			return ResponseEntity.ok(pbAvail.getIndex());
+		} else {
+			return ResponseEntity.ok(-1);
 		}
-
-		return ResponseEntity.noContent().build();
 	}
 	
 	@PutMapping("/parking/{id}/unparkCar")
@@ -77,7 +77,7 @@ public class ParkingService {
 			return ResponseEntity.notFound().build();
 		
 		ParkingBay bay = pb.get();
-		if (bay.getOccupied() == 'U' || bay.getOccupied() == '@') {
+		if (bay.getOccupied() == 'U' || bay.getOccupied() == '@' || bay.getOccupied() == '=') {
 			//the bay wasn't occupied then return false
 			return ResponseEntity.ok().body(false);
 		} else {
