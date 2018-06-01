@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.in28minutes.springboot.rest.example</groupId>
-	<artifactId>spring-boot-2-rest-service-swagger</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<groupId>com.demo.parking</groupId>
+	<artifactId>parking</artifactId>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
-	<name>spring-boot-2-rest-service</name>
-	<description>Spring Boot 2 and REST - Example Project</description>
+	<name>parking</name>
+	<description>Spring Boot 2 and REST - Parking Example</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -73,16 +73,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-<!-- 		 <dependency> -->
-<!-- 			<groupId>org.springframework.security</groupId> -->
-<!-- 			<artifactId>spring-security-web</artifactId> -->
-<!-- 			<version>5.0.5.RELEASE</version> -->
-<!-- 		  </dependency> -->
-<!-- 		  <dependency> -->
-<!-- 			<groupId>org.springframework.security</groupId> -->
-<!-- 			<artifactId>spring-security-config</artifactId> -->
-<!-- 			<version>5.0.5.RELEASE</version> -->
-<!-- 		  </dependency> -->
 	</dependencies>
 
 	<build>
