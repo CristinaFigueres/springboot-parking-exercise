@@ -79,6 +79,7 @@ public class Parking {
     public String toString() {
 		 StringBuffer sb = new StringBuffer();
 		 StringBuffer line = new StringBuffer();
+		 int lines = this.size;
 		 //Ordering the bays in the parking lot to obtain always the same string
 		 Collections.sort(this.bays, new ParkingBayComparator());
 		 boolean reversed = false;
@@ -94,7 +95,8 @@ public class Parking {
 				 } else {
 					 sb.append(line);					 
 				 }
-				 sb.append("\n");
+				 if (lines > 1)sb.append("\n");
+				 lines--;
 				 line.setLength(0);
 				 //one line with normal direction, the other reversed
 				 reversed = !reversed;

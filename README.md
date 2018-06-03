@@ -56,11 +56,12 @@ $ mvn clean verify
 
 ## Improvements
 
+Improvements that can be implemented in order to obtain a better solution (//TODO:)
+
 ### Funcionality improvements
 
 * The position of each bay inside the parking lot starts with 1 and in the enunciate seems that is defined as 0
 * It would be easier if the bay position is stored in a new fild instead of use the Priary key for this matter
-* Delete the last \n in the toString result
 
 
 

@@ -129,7 +129,7 @@ public class ParkingControllerTest {
 	    
 		@Test
 	    public void testToString() {
-	        assertEquals("UUUU@\n@U=UU\nU=UUU\nUUUUU\nUUUUU\n", parking.toString());
+	        assertEquals("UUUU@\n@U=UU\nU=UUU\nUUUUU\nUUUUU", parking.toString());
 	    }
 	    
 	    @Test
@@ -138,47 +138,47 @@ public class ParkingControllerTest {
 	    	parkingController.parkCar('C', id);
 	 		Optional<Parking> parkingOp = parkingRepository.findById(id);
 	 		parking =parkingOp.get();
-	        assertEquals("UUUU@\n@U=CU\nU=UUU\nUUUUU\nUUUUU\n", parking.toString());
+	        assertEquals("UUUU@\n@U=CU\nU=UUU\nUUUUU\nUUUUU", parking.toString());
 	
 	        parkingController.parkCar('C', id);
 	 		parkingOp = parkingRepository.findById(id);
 	 		parking =parkingOp.get();
-	        assertEquals("UUUU@\n@C=CU\nU=UUU\nUUUUU\nUUUUU\n", parking.toString());
+	        assertEquals("UUUU@\n@C=CU\nU=UUU\nUUUUU\nUUUUU", parking.toString());
 	        
 	        parkingController.parkCar('M', id);
 	 		parkingOp = parkingRepository.findById(id);
 	 		parking =parkingOp.get();
-	        assertEquals("UUUU@\n@C=CU\nM=UUU\nUUUUU\nUUUUU\n", parking.toString());
+	        assertEquals("UUUU@\n@C=CU\nM=UUU\nUUUUU\nUUUUU", parking.toString());
 	
 	        parkingController.parkCar('M', id);
 	 		parkingOp = parkingRepository.findById(id);
 	 		parking =parkingOp.get();
-	        assertEquals("UUUU@\n@C=CU\nM=MUU\nUUUUU\nUUUUU\n", parking.toString());
+	        assertEquals("UUUU@\n@C=CU\nM=MUU\nUUUUU\nUUUUU", parking.toString());
 	        
 	        parkingController.parkCar('D', id);
 	        parkingOp = parkingRepository.findById(id);
 	 		parking =parkingOp.get();
-	        assertEquals("UUUU@\nDC=CU\nM=MUU\nUUUUU\nUUUUU\n", parking.toString());
+	        assertEquals("UUUU@\nDC=CU\nM=MUU\nUUUUU\nUUUUU", parking.toString());
 	
 	        parkingController.parkCar('D', id);
 	 		parkingOp = parkingRepository.findById(id);
 	 		parking =parkingOp.get();
-	        assertEquals("UUUUD\nDC=CU\nM=MUU\nUUUUU\nUUUUU\n", parking.toString());
+	        assertEquals("UUUUD\nDC=CU\nM=MUU\nUUUUU\nUUUUU", parking.toString());
 	
 	        parkingController.parkCar('D', id);
 	        parkingOp = parkingRepository.findById(id);
 	  		parking =parkingOp.get();
-	        assertEquals("UUUUD\nDC=CU\nM=MUU\nUUUUU\nUUUUU\n", parking.toString());
+	        assertEquals("UUUUD\nDC=CU\nM=MUU\nUUUUU\nUUUUU", parking.toString());
 	
 	        parkingController.unparkCar(parkingBayRepository.findById(new Long(503)).get());
 	        parkingOp = parkingRepository.findById(id);
 	  		parking =parkingOp.get();
-	        assertEquals("UUUUD\nDC=CU\nM=MUU\nUUUUU\nUUUUU\n", parking.toString());
+	        assertEquals("UUUUD\nDC=CU\nM=MUU\nUUUUU\nUUUUU", parking.toString());
 	        
 	        parkingController.unparkCar(parkingBayRepository.findById(new Long(513)).get());
 	        parkingOp = parkingRepository.findById(id);
 	  		parking =parkingOp.get();
-	        assertEquals("UUUUD\nDC=CU\nM=UUU\nUUUUU\nUUUUU\n", parking.toString());
+	        assertEquals("UUUUD\nDC=CU\nM=UUU\nUUUUU\nUUUUU", parking.toString());
 	        
 	        //unpark the parked to leave the DB as before
 	        parkingController.unparkCar(parkingBayRepository.findById(new Long(505)).get());

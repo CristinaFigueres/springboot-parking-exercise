@@ -47,7 +47,7 @@ public class ParkingTest {
 
     @Test
     public void testToString() {
-    	assertEquals("UUU\nU=@\nUUU\n", parking.toString());
+    	assertEquals("UUU\nU=@\nUUU", parking.toString());
     }
 
 }
