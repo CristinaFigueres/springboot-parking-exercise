@@ -68,10 +68,9 @@ Improvements that can be implemented in order to obtain a better solution (//TOD
 ### Technical improvements
 
 * Use some tool to generate tests reports like `jacoco`
-* Achieve with jpa return only the first value in the firstAvailable list o ParkingBay
+* Achieve with jpa return only the first value in the firstAvailable list of ParkingBay using Pageable
 * Use of JavaDoc
-* Catch of exceptions
-* Input validations
+* Input validations and catching exceptions if needed
 * Use of interfaces
 
 

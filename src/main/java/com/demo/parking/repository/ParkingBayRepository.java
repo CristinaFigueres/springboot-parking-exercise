@@ -15,8 +15,8 @@ public interface ParkingBayRepository extends JpaRepository<ParkingBay, Long>{
 	 @Query("select count(*) from ParkingBay p where p.parking.id = ?1 and p.occupied in (?2)")
 	 long countAvailableBays(long idParking, List<Character> typeBay);
 	
-	 //TODO: make it return the first result
+	 //TODO: make it return the first result with pageable
 	 @Query("select p from ParkingBay p where p.parking.id = ?1 and p.occupied in (?2)")
 	 List<ParkingBay> firstAvailable(long id, List<Character> typeBay, Sort sort);
-
+	 
 }
