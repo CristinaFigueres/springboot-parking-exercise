@@ -106,25 +106,6 @@ public class ParkingBay {
 	public void setMinDistance(Integer minDistance) {
 		this.minDistance = minDistance;
 	}
-
-
-//	public enum BayType {
-//		PEDESTRIAN('='),
-//		DISABLED_EMPTY('@'),  
-//		NON_DISABLED_EMPTY('U'),
-//		DISABLED_OCCUPIED('D');
-//		
-//		private char description;
-//		
-//		private BayType(char charact){
-//			this.description = charact;
-//		}
-//		
-//		public char getDescription(){
-//			return this.description;
-//		}
-//
-//	};
 		
 }
 

@@ -66,11 +66,8 @@ $ mvn clean verify
 
 ### Technical improvements
 
-* Use some tool to generate tests reports like `jacoco` or `mockito`
+* Use some tool to generate tests reports like `jacoco`
 * Achieve with jpa return only the first value in the firstAvailable list o ParkingBay
-* Add a business layer between the Repository and the REST service
-* Use of constants
-* Use of logs
 * Use of JavaDoc
 * Catch of exceptions
 * Input validations

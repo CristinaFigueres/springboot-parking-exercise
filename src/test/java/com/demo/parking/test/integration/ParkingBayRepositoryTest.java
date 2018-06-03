@@ -1,4 +1,4 @@
-package com.demo.parking.model;
+package com.demo.parking.test.integration;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,9 +14,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.demo.parking.model.Parking;
+import com.demo.parking.model.ParkingBay;
+import com.demo.parking.repository.ParkingBayRepository;
+import com.demo.parking.repository.ParkingRepository;
+
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
-public class ITestParkingBayRepository {
+public class ParkingBayRepositoryTest {
 	
 	@Autowired
 	private ParkingRepository parkingRepository;

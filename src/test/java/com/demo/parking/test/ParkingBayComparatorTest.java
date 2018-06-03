@@ -1,16 +1,20 @@
-package com.demo.parking.model;
+package com.demo.parking.test;
+
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import com.demo.parking.model.Parking;
+import com.demo.parking.model.ParkingBay;
+import com.demo.parking.utils.ParkingBayComparator;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest

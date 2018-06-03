@@ -1,4 +1,4 @@
-package com.demo.parking.model;
+package com.demo.parking.service;
 
 public class ParkingNotFoundException extends RuntimeException {
 

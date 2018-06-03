@@ -1,4 +1,4 @@
-package com.demo.parking.model;
+package com.demo.parking.test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -10,6 +10,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import com.demo.parking.model.Parking;
+import com.demo.parking.model.ParkingBay;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
